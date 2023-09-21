@@ -1,3 +1,5 @@
+
+#Method that converts the expression into RPN
 def infix_to_rpn(expression)
 
   operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2 }
@@ -5,6 +7,7 @@ def infix_to_rpn(expression)
   output = []
   stack = []
 
+  #Dividing the expression into tokens
   tokens = expression.scan(/\d+|\+|\-|\*|\/|\(|\)/)
 
   tokens.each do |token|
@@ -25,7 +28,7 @@ def infix_to_rpn(expression)
     end
   end
 
-  while !stack.empty?
+  until stack.empty?
     output << stack.pop
   end
 
@@ -34,6 +37,7 @@ end
 
 
 while true
+  #Taking the expression and passing it to the method
   puts "Enter the expression below: "
   input = gets.chomp
   rpn = infix_to_rpn(input)
